@@ -12,8 +12,15 @@ namespace csharp
 
         public void UpdateQuality()
         {
+            ItemFactory factory = new ItemFactory();
+
             for (var i = 0; i < Items.Count; i++)
             {
+                //if-else block is refactored like below
+                factory.CreateItemInstance(Items[i]).CalculateSellByDate();
+                factory.CreateItemInstance(Items[i]).CalculateQuality();
+                factory.CreateItemInstance(Items[i]).SpecifyQualityValue();
+                /*
                 if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     if (Items[i].Quality > 0)
@@ -83,6 +90,7 @@ namespace csharp
                         }
                     }
                 }
+                */
             }
         }
     }
